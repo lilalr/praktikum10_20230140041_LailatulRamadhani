@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodOrder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-[#f9f9f6] font-sans text-gray-800">
+
+  <!-- Navigasi -->
+  <nav class="bg-[#c4d4c1] shadow-md">
+    <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+      <a href="#" class="flex items-center space-x-3">
+        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Logo" />
+        <span class="self-center text-2xl font-bold text-[#2f4f4f]">FoodOrder</span>
+      </a>
+      <div class="flex items-center space-x-4">
+        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="text-[#2f4f4f] hover:text-white hover:bg-[#6b8e6e] font-medium px-4 py-2 rounded-md transition">Menu</button>
+        <a href="#kontak" class="text-[#2f4f4f] hover:text-white hover:bg-[#6b8e6e] font-medium px-4 py-2 rounded-md transition">Kontak</a>
+      </div>
+      <div id="dropdownNavbar" class="hidden z-10 absolute mt-2 w-44 bg-white rounded-md shadow-md">
+        <ul class="py-2 text-sm text-gray-700">
+          <li><a href="#" class="block px-4 py-2 hover:bg-[#e6f0e9]">Jelajahi Menu</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-[#e6f0e9]">Favorit Saya</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-[#e6f0e9]">Promo & Diskon</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-[#e6f0e9]">Keluar</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-[#eef4ec] py-16 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-5xl font-extrabold text-[#2f4f4f] mb-4">Nikmati Cita Rasa Terbaik</h1>
+      <p class="text-gray-600 text-lg mb-6">Hidangan lezat, bahan segar, dan pengalaman kuliner terbaik untuk semua.</p>
+      <form class="flex flex-col sm:flex-row justify-center gap-3 max-w-lg mx-auto">
+        <input type="email" class="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-[#6b8e6e]" placeholder="Masukkan email kamu..." required />
+        <button type="submit" class="px-5 py-3 bg-[#6b8e6e] text-white rounded-lg hover:bg-[#557a68] transition">Kirim</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Tombol kategori -->
+  <div class="flex flex-wrap justify-center gap-3 my-8">
+    <button onclick="filterMenu('all')" class="px-5 py-2 border border-[#6b8e6e] text-[#6b8e6e] rounded-full hover:bg-[#6b8e6e] hover:text-white transition duration-300 ease-in-out">Semua Menu</button>
+    <button onclick="filterMenu('camilan')" class="px-5 py-2 border border-gray-400 text-gray-600 rounded-full hover:bg-gray-200 transition duration-300 ease-in-out">Camilan</button>
+    <button onclick="filterMenu('utama')" class="px-5 py-2 border border-gray-400 text-gray-600 rounded-full hover:bg-gray-200 transition duration-300 ease-in-out">Makanan Utama</button>
+    <button onclick="filterMenu('minuman')" class="px-5 py-2 border border-gray-400 text-gray-600 rounded-full hover:bg-gray-200 transition duration-300 ease-in-out">Minuman</button>
+    <button onclick="filterMenu('penutup')" class="px-5 py-2 border border-gray-400 text-gray-600 rounded-full hover:bg-gray-200 transition duration-300 ease-in-out">Makanan Penutup</button>
+  </div>
+
+  <!-- Gambar menu -->
+  <div id="menuContainer" class="grid grid-cols-2 md:grid-cols-3 gap-4 px-4">
+    <img src="basreng pedas.webp" data-kategori="camilan" alt="Menu 1" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="dendeng.jpg" data-kategori="utama" alt="Menu 2" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lgm">
+    <img src="kue lontar.webp" data-kategori="penutup" alt="Menu 3" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="matcha.jpg" data-kategori="minuman" alt="Menu 4" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="nasi penyetan.jpg" data-kategori="utama" alt="Menu 5" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="dessert box.jpg" data-kategori="penutup" alt="Menu 6" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="nasi penyetan.jpg" data-kategori="utama" alt="Menu 7" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="kwetiau.jpg" data-kategori="utama" alt="Menu 8" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="mie goreng.webp" data-kategori="utama" alt="Menu 9" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="mie rebus.jpg" data-kategori="utama" alt="Menu 10" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="basreng ori.jpg" data-kategori="camilan" alt="Menu 11" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="cireng.jpg" data-kategori="camilan" alt="Menu 12" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="coklat truffle.jpg" data-kategori="camilan" alt="Menu 13" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="es latte.jpg" data-kategori="minuman" alt="Menu 14" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="esteh.jpg" data-kategori="minuman" alt="Menu 15" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="sate madura.jpg" data-kategori="utama" alt="Menu 16" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="sate padang.webp" data-kategori="utama" alt="Menu 17" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="mie celor.jpg" data-kategori="utama" alt="Menu 18" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="eskri.jpg" data-kategori="penutup" alt="Menu 19" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="puding.jpg" data-kategori="penutup" alt="Menu 20" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="martabak.webp" data-kategori="camilan" alt="Menu 21" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="es boba.jpg" data-kategori="minuman" alt="Menu 22" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="nescafe.webp" data-kategori="minuman" alt="Menu 23" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="leci tea.webp" data-kategori="minuman" alt="Menu 24" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="es coklat.jpg" data-kategori="minuman" alt="Menu 25" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="lumpia.jpeg" data-kategori="camilan" alt="Menu 26" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="kebab.jpg" data-kategori="camilan" alt="Menu 27" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="burger.jpg" data-kategori="camilan" alt="Menu 28" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="pizza.webp" data-kategori="camilan" alt="Menu 29" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="naspad.jpeg" data-kategori="utama" alt="Menu 30" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="lontong sayur.jpeg" data-kategori="utama" alt="Menu 31" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="dendeng.jpg" data-kategori="utama" alt="Menu 30" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="nasi goreng.jpg" data-kategori="utama" alt="Menu 30" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="nasi pecel.jpg" data-kategori="utama" alt="Menu 31" class="rrounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="dimsum.jpg" data-kategori="camilan" alt="Menu 32" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="kentang goreng.jpg" data-kategori="camilan" alt="Menu 33" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="dessert.jpg" data-kategori="penutup" alt="Menu 34" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="macaron.jpeg" data-kategori="penutup" alt="Menu 35" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="mochi.webp" data-kategori="penutup" alt="Menu 36" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="brownis.jpg" data-kategori="penutup" alt="Menu 37" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <img src="eskrim.jpg" data-kategori="penutup" alt="Menu 38" class="rounded-lg cursor-pointer menu-item transform transition duration-300 hover:scale-105 hover:shadow-lg">
+  </div>
+
+
+  <!-- Kontak Section -->
+  <section id="kontak" class="bg-[#eef4ec] py-16 text-center mt-16">
+    <div class="max-w-2xl mx-auto">
+      
+      <h2 class="text-3xl font-bold mb-4 text-[#2f4f4f]">Laper? Segera Pesan dan Hubungi Kami!</h2>
+      <p class="text-gray-600 mb-6">Kami siap menjawab pertanyaan dan menerima masukan dari Anda.</p>
+      <form class="flex flex-col gap-4">
+        <input type="text" placeholder="Nama" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6b8e6e]" required>
+        <input type="email" placeholder="Email" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6b8e6e]" required>
+        <textarea rows="4" placeholder="Pesan" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6b8e6e]" required></textarea>
+        <button type="submit" class="px-5 py-3 bg-[#6b8e6e] text-white rounded-lg hover:bg-[#557a68] transition">Kirim</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- Script -->
+  <script>
+    function filterMenu(kategori) {
+      const items = document.querySelectorAll('.menu-item');
+      items.forEach(item => {
+        const itemKategori = item.getAttribute('data-kategori');
+        item.classList.toggle('hidden', kategori !== 'all' && itemKategori !== kategori);
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+</body>
+</html>
